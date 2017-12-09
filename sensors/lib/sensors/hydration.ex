@@ -25,6 +25,7 @@ defmodule Sensors.Hydration do
         Logger.debug "Received hydration on pin #{p}"
         send(1.0)
     end
+    Process.sleep(5000)
     listen_loop()
   end
 
@@ -41,7 +42,5 @@ defmodule Sensors.Hydration do
         endpoint: "hydrations"
       }
     )
-
-    Logger.error "Response: #{inspect res}"
   end
 end
