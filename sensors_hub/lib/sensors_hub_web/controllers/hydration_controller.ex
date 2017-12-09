@@ -15,8 +15,8 @@ defmodule SensorsHubWeb.HydrationController do
     with {:ok, %Hydration{} = hydration} <- Sensors.create_hydration(hydration_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", hydration_path(conn, :show, hydration))
-      |> render("show.json", hydration: hydration)
+      #|> put_resp_header("location", hydration_path(conn, :show, hydration))
+      #|> render("show.json", hydration: hydration)
     end
   end
 
