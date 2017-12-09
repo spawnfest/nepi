@@ -11,9 +11,11 @@ config :sensors_hub,
 
 # Configures the endpoint
 config :sensors_hub, SensorsHubWeb.Endpoint,
-  url: [scheme: "https", host: "https://sensors-hub.herokuapp.com", port: 443],
+  load_from_system_env: true,
+  url: [scheme: "https", host: "sensors-hub.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  secret_key_base: "yMTWkZ3J4lYCEOqsvlZHEPxbIqSA6tnEAviCrQxFIGpYH5FzKIIFEh5tKdjs/dGv",
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   render_errors: [view: SensorsHubWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: SensorsHub.PubSub,
            adapter: Phoenix.PubSub.PG2]
