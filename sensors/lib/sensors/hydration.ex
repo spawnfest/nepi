@@ -32,9 +32,11 @@ defmodule Sensors.Hydration do
     res = Sensors.Sender.send(
       %Sensors.SenderData{
         data: %{
-          measured_at: DateTime.utc_now(),
-          value: value,
-          sensor_name: "hydrations_1"
+          hydration: %{
+            measured_at: DateTime.utc_now(),
+            value: value,
+            sensor_name: "hydrations_1"
+          }
         },
         endpoint: "hydrations"
       }
