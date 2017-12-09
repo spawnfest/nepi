@@ -197,4 +197,100 @@ defmodule SensorsHub.Sensors do
   def change_thermal(%Thermal{} = thermal) do
     Thermal.changeset(thermal, %{})
   end
+
+  alias SensorsHub.Sensors.Humidity
+
+  @doc """
+  Returns the list of humidities.
+
+  ## Examples
+
+      iex> list_humidities()
+      [%Humidity{}, ...]
+
+  """
+  def list_humidities do
+    Repo.all(Humidity)
+  end
+
+  @doc """
+  Gets a single humidity.
+
+  Raises `Ecto.NoResultsError` if the Humidity does not exist.
+
+  ## Examples
+
+      iex> get_humidity!(123)
+      %Humidity{}
+
+      iex> get_humidity!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_humidity!(id), do: Repo.get!(Humidity, id)
+
+  @doc """
+  Creates a humidity.
+
+  ## Examples
+
+      iex> create_humidity(%{field: value})
+      {:ok, %Humidity{}}
+
+      iex> create_humidity(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_humidity(attrs \\ %{}) do
+    %Humidity{}
+    |> Humidity.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a humidity.
+
+  ## Examples
+
+      iex> update_humidity(humidity, %{field: new_value})
+      {:ok, %Humidity{}}
+
+      iex> update_humidity(humidity, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_humidity(%Humidity{} = humidity, attrs) do
+    humidity
+    |> Humidity.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Humidity.
+
+  ## Examples
+
+      iex> delete_humidity(humidity)
+      {:ok, %Humidity{}}
+
+      iex> delete_humidity(humidity)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_humidity(%Humidity{} = humidity) do
+    Repo.delete(humidity)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking humidity changes.
+
+  ## Examples
+
+      iex> change_humidity(humidity)
+      %Ecto.Changeset{source: %Humidity{}}
+
+  """
+  def change_humidity(%Humidity{} = humidity) do
+    Humidity.changeset(humidity, %{})
+  end
 end

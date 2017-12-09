@@ -130,4 +130,68 @@ defmodule SensorsHub.SensorsTest do
       assert %Ecto.Changeset{} = Sensors.change_thermal(thermal)
     end
   end
+
+  describe "humidities" do
+    alias SensorsHub.Sensors.Humidity
+
+    @valid_attrs %{measured_at: "2010-04-17 14:00:00.000000Z", sensor_name: "some sensor_name", value: 120.5}
+    @update_attrs %{measured_at: "2011-05-18 15:01:01.000000Z", sensor_name: "some updated sensor_name", value: 456.7}
+    @invalid_attrs %{measured_at: nil, sensor_name: nil, value: nil}
+
+    def humidity_fixture(attrs \\ %{}) do
+      {:ok, humidity} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sensors.create_humidity()
+
+      humidity
+    end
+
+    test "list_humidities/0 returns all humidities" do
+      humidity = humidity_fixture()
+      assert Sensors.list_humidities() == [humidity]
+    end
+
+    test "get_humidity!/1 returns the humidity with given id" do
+      humidity = humidity_fixture()
+      assert Sensors.get_humidity!(humidity.id) == humidity
+    end
+
+    test "create_humidity/1 with valid data creates a humidity" do
+      assert {:ok, %Humidity{} = humidity} = Sensors.create_humidity(@valid_attrs)
+      assert humidity.measured_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert humidity.sensor_name == "some sensor_name"
+      assert humidity.value == 120.5
+    end
+
+    test "create_humidity/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sensors.create_humidity(@invalid_attrs)
+    end
+
+    test "update_humidity/2 with valid data updates the humidity" do
+      humidity = humidity_fixture()
+      assert {:ok, humidity} = Sensors.update_humidity(humidity, @update_attrs)
+      assert %Humidity{} = humidity
+      assert humidity.measured_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert humidity.sensor_name == "some updated sensor_name"
+      assert humidity.value == 456.7
+    end
+
+    test "update_humidity/2 with invalid data returns error changeset" do
+      humidity = humidity_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sensors.update_humidity(humidity, @invalid_attrs)
+      assert humidity == Sensors.get_humidity!(humidity.id)
+    end
+
+    test "delete_humidity/1 deletes the humidity" do
+      humidity = humidity_fixture()
+      assert {:ok, %Humidity{}} = Sensors.delete_humidity(humidity)
+      assert_raise Ecto.NoResultsError, fn -> Sensors.get_humidity!(humidity.id) end
+    end
+
+    test "change_humidity/1 returns a humidity changeset" do
+      humidity = humidity_fixture()
+      assert %Ecto.Changeset{} = Sensors.change_humidity(humidity)
+    end
+  end
 end
