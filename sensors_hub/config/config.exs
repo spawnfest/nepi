@@ -11,7 +11,8 @@ config :sensors_hub,
 
 # Configures the endpoint
 config :sensors_hub, SensorsHubWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [scheme: "https", host: "https://sensors-hub.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   secret_key_base: "yMTWkZ3J4lYCEOqsvlZHEPxbIqSA6tnEAviCrQxFIGpYH5FzKIIFEh5tKdjs/dGv",
   render_errors: [view: SensorsHubWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: SensorsHub.PubSub,
