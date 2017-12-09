@@ -3,6 +3,7 @@ defmodule SensorsHubWeb.UserSocket do
 
   ## Channels
   # channel "room:*", SensorsHubWeb.RoomChannel
+  channel "sensors:lobby", SensorsHubWeb.SensorsChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

@@ -12,6 +12,8 @@ defmodule SensorsHubWeb.ThermalController do
   end
 
   def create(conn, %{"thermal" => thermal_params}) do
+    SensorsHubWeb.Endpoint.broadcast("sensors:lobby", "thermal", %{ thermal: thermal_params})
+
     with {:ok, %Thermal{} = thermal} <- Sensors.create_thermal(thermal_params) do
       conn
       |> put_status(:created)

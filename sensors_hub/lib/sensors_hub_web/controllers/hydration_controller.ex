@@ -12,6 +12,8 @@ defmodule SensorsHubWeb.HydrationController do
   end
 
   def create(conn, %{"hydration" => hydration_params}) do
+    SensorsHubWeb.Endpoint.broadcast("sensors:lobby", "hydration", %{ hydration: hydration_params})
+
     with {:ok, %Hydration{} = hydration} <- Sensors.create_hydration(hydration_params) do
       conn
       |> put_status(:created)

@@ -12,6 +12,8 @@ defmodule SensorsHubWeb.ProximityController do
   end
 
   def create(conn, %{"proximity" => proximity_params}) do
+    SensorsHubWeb.Endpoint.broadcast("sensors:lobby", "proximity", %{ proximity: proximity_params})
+    
     with {:ok, %Proximity{} = proximity} <- Sensors.create_proximity(proximity_params) do
       conn
       |> put_status(:created)

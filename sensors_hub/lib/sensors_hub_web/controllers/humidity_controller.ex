@@ -12,6 +12,8 @@ defmodule SensorsHubWeb.HumidityController do
   end
 
   def create(conn, %{"humidity" => humidity_params}) do
+    SensorsHubWeb.Endpoint.broadcast("sensors:lobby", "humidity", %{ humidity: humidity_params})
+
     with {:ok, %Humidity{} = humidity} <- Sensors.create_humidity(humidity_params) do
       conn
       |> put_status(:created)
