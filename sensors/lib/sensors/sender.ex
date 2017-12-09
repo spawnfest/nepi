@@ -17,7 +17,7 @@ defmodule Sensors.Sender do
       request_content = get_request_content(data)
 
       format_url(endpoint)
-      |> HTTPoison.post!(request_content, [], [ssl: [{:versions, [:'tlsv1.2']}]])
+      |> HTTPoison.post!(request_content, [{"Content-Type", "application/json"}], [ssl: [{:versions, [:'tlsv1.2']}]])
     rescue
       e -> e
     end
