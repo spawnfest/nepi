@@ -18,7 +18,8 @@ config :logger,
 
 config :sensors,
   input_pin: 17,
-  sensor_type: :hydration
+  sensor_type: :hydration,
+  base_url: "http://sensors-hub.herokuapp.com/"
 
 key_mgmt = System.get_env("NERVES_NETWORK_KEY_MGMT") || "WPA-PSK"
 
