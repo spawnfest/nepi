@@ -11,6 +11,7 @@ defmodule SensorsHubWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    resources "/hydrations", HydrationController, except: [:new, :index]
   end
 
   scope "/", SensorsHubWeb do
