@@ -51,7 +51,10 @@ defmodule Sensors.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   def deps do
-    [{:nerves, "~> 0.7", runtime: false}] ++
+    [
+      {:nerves, "~> 0.7", runtime: false},
+      {:elixir_ale, "~> 1.0"}
+    ] ++
     deps(@target)
   end
 

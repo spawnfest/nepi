@@ -20,6 +20,10 @@ config :bootloader,
   init: [:nerves_runtime],
   app: Mix.Project.config[:app]
 
+config :sensors,
+  input_pin: 17,
+  sensor_type: :hydration
+
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
