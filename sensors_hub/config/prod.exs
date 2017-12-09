@@ -15,9 +15,13 @@ use Mix.Config
 # which you typically run after static files are built.
 config :sensors_hub, SensorsHubWeb.Endpoint,
   load_from_system_env: true,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
-
+  url: [scheme: "https", host: "sensors-hub.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  render_errors: [view: SensorsHubWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: SensorsHub.PubSub,
+           adapter: Phoenix.PubSub.PG2]
 # Do not print debug messages in production
 config :logger, level: :info
 

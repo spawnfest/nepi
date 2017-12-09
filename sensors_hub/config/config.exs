@@ -11,12 +11,11 @@ config :sensors_hub,
 
 # Configures the endpoint
 config :sensors_hub, SensorsHubWeb.Endpoint,
-  url: [scheme: "https", host: "https://sensors-hub.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "localhost"],
   secret_key_base: "yMTWkZ3J4lYCEOqsvlZHEPxbIqSA6tnEAviCrQxFIGpYH5FzKIIFEh5tKdjs/dGv",
   render_errors: [view: SensorsHubWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: SensorsHub.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+          adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
