@@ -14,9 +14,10 @@ defmodule Sensors.Sender do
 
   def handle_call({:push, %Sensors.SenderData{data: data, endpoint: endpoint}}, _from, _state) do
     result = try do
-      url = format_url(endpoint)
-      Logger.error "Sending #{inspect data} to endpoint #{url}"
-      HTTPoison.post!(url, data)
+      request_content = get_request_content(data)
+
+      format_url(endpoint)
+      |> HTTPoison.post!(request_content)
     rescue
       e -> e
     end
@@ -29,5 +30,8 @@ defmodule Sensors.Sender do
 
   defp format_url(endpoint), do:
     "#{@base_url}#{endpoint}"
+
+  defp get_request_content(data), do:
+    Poison.encode!(data)
 
 end

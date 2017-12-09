@@ -55,7 +55,8 @@ defmodule Sensors.Mixfile do
       {:nerves, "~> 0.7", runtime: false},
       {:elixir_ale, "~> 1.0"},
       {:nerves_network, "~> 0.3"},
-      {:httpoison, "~> 0.13.0"}
+      {:httpoison, "~> 0.13.0"},
+      {:poison, "~> 3.1"}
     ] ++
     deps(@target)
   end
