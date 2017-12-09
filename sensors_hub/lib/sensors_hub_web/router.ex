@@ -11,16 +11,20 @@ defmodule SensorsHubWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
 
+  scope "/api", SensorsHubWeb do
+     pipe_through :api
+
+     resources "/hydrations", HydrationController, except: [:new, :edit]
+     resources "/thermals", ThermalController, except: [:new, :edit]
+     resources "/humidities", HumidityController, except: [:new, :edit]
+     resources "/proximities", ProximityController, except: [:new, :edit]
   end
 
   scope "/", SensorsHubWeb do
-    pipe_through [:browser, :api] # Use the default browser stack
+    pipe_through :browser # Use the default browser stack
 
-    resources "/hydrations", HydrationController, except: [:new, :edit]
-    resources "/thermals", ThermalController, except: [:new, :edit]
-    resources "/humidities", HumidityController, except: [:new, :edit]
-    resources "/proximities", ProximityController, except: [:new, :edit]
     get "/", PageController, :index
   end
 
