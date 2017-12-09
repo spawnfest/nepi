@@ -18,6 +18,7 @@ defmodule SensorsHubWeb.Router do
     pipe_through [:browser, :api] # Use the default browser stack
 
     resources "/hydrations", HydrationController, except: [:new, :edit]
+    resources "/hydrations", ThermalController, except: [:new, :edit]
     get "/", PageController, :index
   end
 

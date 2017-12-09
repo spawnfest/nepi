@@ -66,4 +66,68 @@ defmodule SensorsHub.SensorsTest do
       assert %Ecto.Changeset{} = Sensors.change_hydration(hydration)
     end
   end
+
+  describe "thermals" do
+    alias SensorsHub.Sensors.Thermal
+
+    @valid_attrs %{measured_at: "2010-04-17 14:00:00.000000Z", sensor_name: "some sensor_name", value: 120.5}
+    @update_attrs %{measured_at: "2011-05-18 15:01:01.000000Z", sensor_name: "some updated sensor_name", value: 456.7}
+    @invalid_attrs %{measured_at: nil, sensor_name: nil, value: nil}
+
+    def thermal_fixture(attrs \\ %{}) do
+      {:ok, thermal} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sensors.create_thermal()
+
+      thermal
+    end
+
+    test "list_thermals/0 returns all thermals" do
+      thermal = thermal_fixture()
+      assert Sensors.list_thermals() == [thermal]
+    end
+
+    test "get_thermal!/1 returns the thermal with given id" do
+      thermal = thermal_fixture()
+      assert Sensors.get_thermal!(thermal.id) == thermal
+    end
+
+    test "create_thermal/1 with valid data creates a thermal" do
+      assert {:ok, %Thermal{} = thermal} = Sensors.create_thermal(@valid_attrs)
+      assert thermal.measured_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert thermal.sensor_name == "some sensor_name"
+      assert thermal.value == 120.5
+    end
+
+    test "create_thermal/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sensors.create_thermal(@invalid_attrs)
+    end
+
+    test "update_thermal/2 with valid data updates the thermal" do
+      thermal = thermal_fixture()
+      assert {:ok, thermal} = Sensors.update_thermal(thermal, @update_attrs)
+      assert %Thermal{} = thermal
+      assert thermal.measured_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert thermal.sensor_name == "some updated sensor_name"
+      assert thermal.value == 456.7
+    end
+
+    test "update_thermal/2 with invalid data returns error changeset" do
+      thermal = thermal_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sensors.update_thermal(thermal, @invalid_attrs)
+      assert thermal == Sensors.get_thermal!(thermal.id)
+    end
+
+    test "delete_thermal/1 deletes the thermal" do
+      thermal = thermal_fixture()
+      assert {:ok, %Thermal{}} = Sensors.delete_thermal(thermal)
+      assert_raise Ecto.NoResultsError, fn -> Sensors.get_thermal!(thermal.id) end
+    end
+
+    test "change_thermal/1 returns a thermal changeset" do
+      thermal = thermal_fixture()
+      assert %Ecto.Changeset{} = Sensors.change_thermal(thermal)
+    end
+  end
 end
