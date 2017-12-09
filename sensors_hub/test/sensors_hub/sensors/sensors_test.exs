@@ -194,4 +194,68 @@ defmodule SensorsHub.SensorsTest do
       assert %Ecto.Changeset{} = Sensors.change_humidity(humidity)
     end
   end
+
+  describe "proximities" do
+    alias SensorsHub.Sensors.Proximity
+
+    @valid_attrs %{measured_at: "2010-04-17 14:00:00.000000Z", sensor_name: "some sensor_name", value: 120.5}
+    @update_attrs %{measured_at: "2011-05-18 15:01:01.000000Z", sensor_name: "some updated sensor_name", value: 456.7}
+    @invalid_attrs %{measured_at: nil, sensor_name: nil, value: nil}
+
+    def proximity_fixture(attrs \\ %{}) do
+      {:ok, proximity} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sensors.create_proximity()
+
+      proximity
+    end
+
+    test "list_proximities/0 returns all proximities" do
+      proximity = proximity_fixture()
+      assert Sensors.list_proximities() == [proximity]
+    end
+
+    test "get_proximity!/1 returns the proximity with given id" do
+      proximity = proximity_fixture()
+      assert Sensors.get_proximity!(proximity.id) == proximity
+    end
+
+    test "create_proximity/1 with valid data creates a proximity" do
+      assert {:ok, %Proximity{} = proximity} = Sensors.create_proximity(@valid_attrs)
+      assert proximity.measured_at == DateTime.from_naive!(~N[2010-04-17 14:00:00.000000Z], "Etc/UTC")
+      assert proximity.sensor_name == "some sensor_name"
+      assert proximity.value == 120.5
+    end
+
+    test "create_proximity/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sensors.create_proximity(@invalid_attrs)
+    end
+
+    test "update_proximity/2 with valid data updates the proximity" do
+      proximity = proximity_fixture()
+      assert {:ok, proximity} = Sensors.update_proximity(proximity, @update_attrs)
+      assert %Proximity{} = proximity
+      assert proximity.measured_at == DateTime.from_naive!(~N[2011-05-18 15:01:01.000000Z], "Etc/UTC")
+      assert proximity.sensor_name == "some updated sensor_name"
+      assert proximity.value == 456.7
+    end
+
+    test "update_proximity/2 with invalid data returns error changeset" do
+      proximity = proximity_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sensors.update_proximity(proximity, @invalid_attrs)
+      assert proximity == Sensors.get_proximity!(proximity.id)
+    end
+
+    test "delete_proximity/1 deletes the proximity" do
+      proximity = proximity_fixture()
+      assert {:ok, %Proximity{}} = Sensors.delete_proximity(proximity)
+      assert_raise Ecto.NoResultsError, fn -> Sensors.get_proximity!(proximity.id) end
+    end
+
+    test "change_proximity/1 returns a proximity changeset" do
+      proximity = proximity_fixture()
+      assert %Ecto.Changeset{} = Sensors.change_proximity(proximity)
+    end
+  end
 end

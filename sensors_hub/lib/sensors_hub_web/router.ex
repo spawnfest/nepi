@@ -20,6 +20,7 @@ defmodule SensorsHubWeb.Router do
     resources "/hydrations", HydrationController, except: [:new, :edit]
     resources "/thermals", ThermalController, except: [:new, :edit]
     resources "/humidities", HumidityController, except: [:new, :edit]
+    resources "/proximities", ProximityController, except: [:new, :edit]
     get "/", PageController, :index
   end
 
