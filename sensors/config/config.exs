@@ -13,6 +13,9 @@ use Mix.Config
 #   rootfs_overlay: "rootfs_overlay",
 #   fwup_conf: "config/fwup.conf"
 
+config :logger,
+  level: :error
+
 config :sensors,
   input_pin: 17,
   sensor_type: :hydration
@@ -39,5 +42,6 @@ config :nerves_network, :default,
 # docs for separating out critical OTP applications such as those
 # involved with firmware updates.
 config :bootloader,
-  init: [:nerves_runtime, :nerves_network],
+  # init: [:nerves_runtime, :nerves_network],
+  init: [:nerves_runtime],
   app: Mix.Project.config[:app]

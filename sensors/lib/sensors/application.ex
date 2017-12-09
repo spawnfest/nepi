@@ -9,6 +9,7 @@ defmodule Sensors.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # worker(Sensors.Worker, [arg1, arg2, arg3]),
+      worker(Sensors.Sender, []),
       worker(Sensors.Dispatcher, [])
     ]
 
