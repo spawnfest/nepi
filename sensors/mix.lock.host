@@ -1,2 +1,4 @@
 %{"distillery": {:hex, :distillery, "1.5.2", "eec18b2d37b55b0bcb670cf2bcf64228ed38ce8b046bb30a9b636a6f5a4c0080", [], [], "hexpm"},
+  "elixir_ale": {:hex, :elixir_ale, "1.0.1", "2066e467e929c589a873e94befd08133eff32c20ef79db24904160dbd7ba75df", [], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm"},
+  "elixir_make": {:hex, :elixir_make, "0.4.0", "992f38fabe705bb45821a728f20914c554b276838433349d4f2341f7a687cddf", [], [], "hexpm"},
   "nerves": {:hex, :nerves, "0.8.3", "cd3db3adadf5d4191249770ff2f247884408722f1fef2fa1e24f3145972bcf6f", [], [{:distillery, "~> 1.4", [hex: :distillery, repo: "hexpm", optional: false]}], "hexpm"}}

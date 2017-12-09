@@ -5,10 +5,23 @@ defmodule Sensors.Hydration do
   alias ElixirALE.GPIO
 
   def start() do
-    Logger.debug "Started hydration on #{@input_pin}"
-    { :ok, input_pid } = GPIO.start_link(@input_pin, :input)
-    spawn fn -> listen_forever(input_pid) end
+    spawn fn -> fetch_forever() end
+    # Logger.debug "Started hydration on #{@input_pin}"
+    # { :ok, input_pid } = GPIO.start_link(@input_pin, :input)
+    # spawn fn -> listen_forever(input_pid) end
     { :ok, self() }
+  end
+
+  def fetch_forever do
+    Logger.error "Sending"
+    try do
+      response = Sensors.Sender.send(nil)
+      Logger.error "#{inspect response}"
+    rescue
+      _ -> Logger.error "Not yet started. retrying"
+    end
+    Process.sleep(5000)
+    fetch_forever()
   end
 
   defp listen_forever(input_pid) do
