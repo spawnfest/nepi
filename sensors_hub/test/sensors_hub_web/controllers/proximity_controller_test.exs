@@ -4,8 +4,8 @@ defmodule SensorsHubWeb.ProximityControllerTest do
   alias SensorsHub.Sensors
   alias SensorsHub.Sensors.Proximity
 
-  @create_attrs %{measured_at: "2010-04-17 14:00:00.000000Z", sensor_name: "some sensor_name", value: 120.5}
-  @update_attrs %{measured_at: "2011-05-18 15:01:01.000000Z", sensor_name: "some updated sensor_name", value: 456.7}
+  @create_attrs %{measured_at: "2010-04-17T14:00:00.000000Z", sensor_name: "some sensor_name", value: 120.5}
+  @update_attrs %{measured_at: "2011-05-18T15:01:01.000000Z", sensor_name: "some updated sensor_name", value: 456.7}
   @invalid_attrs %{measured_at: nil, sensor_name: nil, value: nil}
 
   def fixture(:proximity) do
@@ -32,7 +32,7 @@ defmodule SensorsHubWeb.ProximityControllerTest do
       conn = get conn, proximity_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "measured_at" => "2010-04-17 14:00:00.000000Z",
+        "measured_at" => "2010-04-17T14:00:00.000000Z",
         "sensor_name" => "some sensor_name",
         "value" => 120.5}
     end
@@ -53,7 +53,7 @@ defmodule SensorsHubWeb.ProximityControllerTest do
       conn = get conn, proximity_path(conn, :show, id)
       assert json_response(conn, 200)["data"] == %{
         "id" => id,
-        "measured_at" => "2011-05-18 15:01:01.000000Z",
+        "measured_at" => "2011-05-18T15:01:01.000000Z",
         "sensor_name" => "some updated sensor_name",
         "value" => 456.7}
     end

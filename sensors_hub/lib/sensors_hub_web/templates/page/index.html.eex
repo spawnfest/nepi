@@ -34,3 +34,10 @@
     </ul>
   </div>
 </div>
+<ul>
+  <%= for hydration <- @hydrations do %>
+    <li>
+      Hydration sensor: <b><%= hydration.sensor_name %></b> reported <%= hydration.value %> at <%= hydration.measured_at %> </br>
+    </li>
+  <% end %>
+</ul>
