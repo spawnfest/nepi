@@ -16,10 +16,19 @@ defmodule Sensors.Sender do
     result = try do
       request_content = get_request_content(data)
 
-      format_url(endpoint)
-      |> HTTPoison.post!(request_content, [{"Content-Type", "application/json"}], [ssl: [{:versions, [:'tlsv1.2']}]])
+      res = format_url(endpoint)
+        |> HTTPoison.post!(
+          request_content,
+          [{"Content-Type", "application/json"}],
+          [ssl: [{:versions, [:'tlsv1.2']}]]
+        )
+
+      Logger.info "Response from #{endpoint}: #{inspect res}"
+      res
     rescue
-      e -> e
+      e ->
+        Logger.error "#{inspect e}"
+        e
     end
 
     { :reply, result, [] }

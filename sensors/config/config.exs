@@ -13,9 +13,6 @@ use Mix.Config
 #   rootfs_overlay: "rootfs_overlay",
 #   fwup_conf: "config/fwup.conf"
 
-config :logger,
-  level: :error
-
 config :sensors,
   input_pin: 17,
   sensor_type: :hydration,

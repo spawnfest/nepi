@@ -41,7 +41,5 @@ defmodule Sensors.Hydration do
         endpoint: "hydrations"
       }
     )
-
-    Logger.error "Response: #{inspect res}"
   end
 end
