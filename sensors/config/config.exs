@@ -13,19 +13,31 @@ use Mix.Config
 #   rootfs_overlay: "rootfs_overlay",
 #   fwup_conf: "config/fwup.conf"
 
-# Use bootloader to start the main application. See the bootloader
-# docs for separating out critical OTP applications such as those
-# involved with firmware updates.
-config :bootloader,
-  init: [:nerves_runtime],
-  app: Mix.Project.config[:app]
-
 config :sensors,
   input_pin: 17,
   sensor_type: :hydration
+
+key_mgmt = System.get_env("NERVES_NETWORK_KEY_MGMT") || "WPA-PSK"
+
+config :nerves_network,
+  regulatory_domain: "US"
+
+config :nerves_network, :default,
+  wlan0: [
+    ssid: "defii",
+    psk: "UPC004743",
+    key_mgmt: String.to_atom(key_mgmt)
+  ]
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
 # import_config "#{Mix.Project.config[:target]}.exs"
+
+# Use bootloader to start the main application. See the bootloader
+# docs for separating out critical OTP applications such as those
+# involved with firmware updates.
+config :bootloader,
+  init: [:nerves_runtime, :nerves_network],
+  app: Mix.Project.config[:app]
