@@ -1,4 +1,5 @@
 <canvas id="hydro" width="400" height="400"></canvas>
+<canvas id="humidities" width="400" height="400"></canvas>
 <script>var ctx1 = document.getElementById("hydro");
 var myChart1 = new Chart(ctx1, {
     type: 'bar',
@@ -19,4 +20,26 @@ var myChart1 = new Chart(ctx1, {
         }
     }
 
-})</script>
+})
+var ctx2 = document.getElementById("humidities");
+var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data:{
+      labels: <%= @humidity_keys %>,
+      datasets: [{
+        label: 'hydration',
+        data: <%= @humidity_values %>
+      }]
+      },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+
+})
+</script>
