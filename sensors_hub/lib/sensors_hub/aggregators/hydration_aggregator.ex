@@ -2,9 +2,14 @@ defmodule SensorsHub.Aggregators.HydrationAggregator do
   defstruct [keys: [], values: []]
 
   def aggregate(hydrations) do
-    h2 = Enum.group_by(hydrations, &(&1.measured_at.hour), &(&1.value))
-    keys = Poison.encode!(Map.keys(h2))
-    values = Poison.encode!(Enum.map(Map.values(h2), &(Enum.sum(&1))))
+    grouped_hydrations = Enum.group_by(hydrations, &(&1.measured_at.hour), &(&1.value))
+
+    keys = grouped_hydrations
+      |> Map.keys
+      |> Poison.encode!
+
+    values = Enum.map(Map.values(grouped_hydrations), &(Enum.sum(&1)))
+      |> Poison.encode!()
 
     %SensorsHub.Aggregators.HydrationAggregator{
       keys: keys,
