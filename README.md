@@ -7,13 +7,11 @@ can be checked in realtime on web app (sensors_hub) based on PHOENIX.
 
 ### Currently we are tracking:
 
-* hydration of flowers - this data is aggregated by day
-and we are checking if plants were hydrated three times a day (We are growing very
-exotic type).
+* hydration of flowers - this data is aggregated by hour
 
-* precipitation - which is aggregate by day and we are displaying percentage overview.
+* precipitation - which is aggregate by hour
 
-* people presence - we don't want any strangers around our plantation.
+* fan - we get info if it's on or off (our exotic plants need fan running every 10 minutes)
 
 ### Solution is splitted into two parts
 

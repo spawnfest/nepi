@@ -5,10 +5,11 @@ defmodule Sensors.Dispatcher do
   require Logger
 
   def start_link() do
-    start_sensor(@sensor_type)
+    start_sensor(:hydration)
+    start_sensor(:humidity)
   end
 
-  def start_sensor(:hydration) do
-    Sensors.Hydration.start()
-  end
+  defp start_sensor(:humidity), do: Sensors.Humidity.start()
+  defp start_sensor(:hydration), do: Sensors.Hydration.start()
+
 end

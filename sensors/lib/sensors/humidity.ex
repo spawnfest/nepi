@@ -1,11 +1,11 @@
-defmodule Sensors.Hydration do
-  @input_pin Application.get_env(:sensors, :hydration_pin)
+defmodule Sensors.Humidity do
+  @input_pin Application.get_env(:sensors, :humidity_pin)
 
   require Logger
   alias ElixirALE.GPIO
 
   def start() do
-    Logger.debug "Started hydration on #{@input_pin}"
+    Logger.debug "Started humidity on #{@input_pin}"
     { :ok, input_pid } = GPIO.start_link(@input_pin, :input)
     spawn fn -> listen_forever(input_pid) end
     { :ok, self() }
@@ -19,13 +19,11 @@ defmodule Sensors.Hydration do
   defp listen_loop() do
     receive do
       {:gpio_interrupt, @input_pin, :rising} ->
-        Logger.debug "Received dehydration on pin #{@input_pin}"
+        Logger.debug "Humidity: it's dry on pin #{@input_pin}"
         send(0.0)
       {:gpio_interrupt, @input_pin, :falling} ->
-        Logger.debug "Received hydration on pin #{@input_pin}"
+        Logger.debug "Humidity: it's wet on pin #{@input_pin}"
         send(1.0)
-      response ->
-        Logger.error "Unexcpected receive #{inspect response}"
     end
     Process.sleep(5000)
     listen_loop()
@@ -35,13 +33,13 @@ defmodule Sensors.Hydration do
     res = Sensors.Sender.send(
       %Sensors.SenderData{
         data: %{
-          hydration: %{
+          humidity: %{
             measured_at: DateTime.utc_now(),
             value: value,
-            sensor_name: "hydrations_1"
+            sensor_name: "humidity_1"
           }
         },
-        endpoint: "hydrations"
+        endpoint: "humidities"
       }
     )
   end
