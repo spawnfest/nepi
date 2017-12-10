@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <title>Plant's farm</title>
+    <title>Plantation</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 

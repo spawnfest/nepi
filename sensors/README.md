@@ -4,7 +4,7 @@ Simple NERVES solution which holds implementations for following sensors:
 
 * hydration of flowers
 * precipitation
-* people presence at farm
+* people presence at plantation
 
 ## In order to use sensors at home
 
