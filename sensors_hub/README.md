@@ -1,6 +1,16 @@
 # SensorsHub
 
-To start your Phoenix server:
+Simple web app to display live data from you flowers farm.
+
+Currently we are displaying:
+
+* hydration of flowers
+* precipitation
+* people presence at farm
+
+Currently application is hosted at: [`sensors hub`](https://sensors-hub.herokuapp.com)
+
+### To start your farm at home:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
@@ -8,13 +18,3 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
