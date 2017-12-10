@@ -11,7 +11,7 @@ can be checked in realtime on web app (sensors_hub) based on PHOENIX.
 
 * precipitation - which is aggregate by hour
 
-* fan - we get info if it's on or off (our exotic plants need fan running every 10 minutes)
+* buzzer - which can be used to scarry off intruders :) it can be switch on from web page
 
 ### Solution is splitted into two parts
 
