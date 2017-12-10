@@ -14,7 +14,8 @@ use Mix.Config
 #   fwup_conf: "config/fwup.conf"
 
 config :sensors,
-  input_pin: 17,
+  hydration_pin: 17,
+  humidity_pin: 5,
   sensor_type: :hydration,
   base_url: "https://sensors-hub.herokuapp.com/api/"
 
