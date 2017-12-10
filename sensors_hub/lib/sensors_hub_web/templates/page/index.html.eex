@@ -1,12 +1,32 @@
-<div>Hydration:
-<div id="dryHydro"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
-<div id="waterHydro" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div></div>
-<div>Humidity:
-<div id="dryHumidity"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
-<div id="waterHumidity" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div></div>
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+      <div class="panel panel-default">
+          <div class="panel-heading">Hydration:</div>
+            <div class="panel-body">
+              <div id="dryHydro"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
+              <div id="waterHydro" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div>
+            </div>
+      </div>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Humidity:</div>
+      <div class="panel-body">
+        <div id="dryHumidity"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
+        <div id="waterHumidity" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div>
+      </div>
+    </div>
+  </div>
+<div>
 
-<canvas id="hydro" width="400" height="400"></canvas>
-<canvas id="humidities" width="400" height="400"></canvas>
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <canvas id="hydro" width="200" height="200"></canvas>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <canvas id="humidities" width="200" height="200"></canvas>
+  </div>
+</div>
 <script>var ctx1 = document.getElementById("hydro");
 var myChart1 = new Chart(ctx1, {
     type: 'bar',
@@ -14,7 +34,8 @@ var myChart1 = new Chart(ctx1, {
       labels: <%= @hydrations.keys %>,
       datasets: [{
         label: 'hydration',
-        data: <%= @hydrations.values %>
+        data: <%= @hydrations.values %>,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)'
       }]
       },
     options: {
@@ -35,7 +56,8 @@ var myChart2 = new Chart(ctx2, {
       labels: <%= @humidity_keys %>,
       datasets: [{
         label: 'humidity',
-        data: <%= @humidity_values %>
+        data: <%= @humidity_values %>,
+        backgroundColor: 'rgba(24, 122, 245, 0.2)'
       }]
       },
     options: {
