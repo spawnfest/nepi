@@ -3,11 +3,7 @@
 Simple NERVES solution which holds implementations for following sensors:
 
 * hydration of flowers soil
-* precipitation
-<<<<<<< HEAD
-* people presence at plantation
-=======
->>>>>>> add readme for sensors project
+* rainfall
 
 As also Phoenix Channel-triggered buzzer which can be fired to scare unexpected intruders.
 
@@ -40,3 +36,9 @@ Connect circuit according to diagrams below
 * Install dependencies with `mix deps.get`
 * Create firmware with `mix firmware`
 * Burn to an SD card with `mix firmware.burn`
+
+### Future plans
+
+* Expand application of DAC in order to read more expanded data
+* Implement temperature control
+* Implement motion control to detect unwanted introuders
