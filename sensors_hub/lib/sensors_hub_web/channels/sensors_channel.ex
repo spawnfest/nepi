@@ -17,7 +17,7 @@ defmodule SensorsHubWeb.SensorsChannel do
 
   # It is also common to receive messages from the client and
   # broadcast to everyone in the current topic (sensors:lobby).
-  def handle_in("buzzer", payload, socket) do
+  def handle_in("onbuzzer", payload, socket) do
     broadcast socket, "buzzer", payload
     {:noreply, socket}
   end
