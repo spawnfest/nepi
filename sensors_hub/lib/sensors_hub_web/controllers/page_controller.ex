@@ -13,6 +13,10 @@ defmodule SensorsHubWeb.PageController do
     proximities = SensorsHub.Sensors.list_proximities()
     humidities = SensorsHub.Sensors.list_humidities()
 
-    render(conn, "index.html", hydrations: h2, hydro_keys: h_kyes,hydro_values: h_values, thermals: thermals, proximities: proximities, humidities: humidities)
+    humidities_map = Enum.group_by(humidities, &(&1.measured_at.hour), &(&1.value))
+    humidity_keys = Poison.encode!(Map.keys(humidities_map))
+    humidity_values = Poison.encode!(Enum.map(Map.values(humidities_map), &(Enum.sum(&1))))
+
+    render(conn, "index.html", humidity_keys: humidity_keys, humidity_values: humidity_values, hydro_keys: h_kyes,hydro_values: h_values, thermals: thermals, proximities: proximities, humidities: humidities)
   end
 end
