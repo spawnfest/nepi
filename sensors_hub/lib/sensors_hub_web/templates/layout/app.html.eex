@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <title>Hello SensorsHub!</title>
+    <title>Plant's farm</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
