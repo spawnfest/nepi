@@ -19,8 +19,7 @@ defmodule SensorsHubWeb.PageController do
     render(conn, "index.html",
       humidity_keys: humidity_keys,
       humidity_values: humidity_values,
-      hydro_keys: hydrations.keys,
-      hydro_values: hydrations.values,
+      hydrations: hydrations,
       thermals: thermals,
       proximities: proximities,
       humidities: humidities)
