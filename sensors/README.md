@@ -6,7 +6,7 @@ Simple NERVES solution which holds implementations for following sensors:
 * precipitation
 * people presence at farm
 
-## To start your sensors at home
+## In order to use sensors at home
 
 ### Configuration
 

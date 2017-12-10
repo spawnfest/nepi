@@ -10,7 +10,7 @@ Currently we are displaying:
 
 Currently application is hosted at: [`sensors hub`](https://sensors-hub.herokuapp.com)
 
-### To start your farm at home:
+### In order to view your farm at home:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
