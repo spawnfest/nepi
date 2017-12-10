@@ -2,11 +2,30 @@
 
 Simple NERVES solution which holds implementations for following sensors:
 
-* hydration of flowers
+* hydration of flowers soil
 * precipitation
+<<<<<<< HEAD
 * people presence at plantation
+=======
+>>>>>>> add readme for sensors project
 
-## In order to use sensors at home
+As also Phoenix Channel-triggered buzzer which can be fired to scare unexpected intruders.
+
+## In order to use project at home
+
+Connect circuit according to diagrams below
+
+### Soil moisture sensor YL-69
+
+![alt text](assets/soil-moisture-sensor-yl69-diagram.png "Soil moisture YL-69")
+
+### Rain sensor YL-83
+
+![alt text](assets/rain-sensor-yl38-diagram.png "Rain sensor YL-38")
+
+### Buzzer - alarm
+
+![alt text](assets/buzzer-diagram.png "Buzzer - alarm")
 
 ### Configuration
 
