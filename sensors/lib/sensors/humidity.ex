@@ -25,7 +25,7 @@ defmodule Sensors.Humidity do
         Logger.debug "Humidity: it's wet on pin #{@input_pin}"
         send(1.0)
     end
-    Process.sleep(5000)
+    Process.sleep(500)
     listen_loop()
   end
 

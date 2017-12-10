@@ -27,7 +27,7 @@ defmodule Sensors.Hydration do
       response ->
         Logger.error "Unexcpected receive #{inspect response}"
     end
-    Process.sleep(5000)
+    Process.sleep(500)
     listen_loop()
   end
 
