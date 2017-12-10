@@ -23,7 +23,7 @@ defmodule SensorsHub.Sensors do
 
   def list_today_hydrations do
      all = Repo.all(Hydration)
-     Enum.filter(all, &(&1.measured_at >= Date.utc_today))
+     Enum.filter(all, &(Date.compare(DateTime.to_date(&1.measured_at), Date.utc_today) == :eq))
   end
 
   @doc """
@@ -220,7 +220,7 @@ defmodule SensorsHub.Sensors do
 
   def list_today_humidities do
       all = Repo.all(Humidity)
-      Enum.filter(all, &(&1.measured_at >= Date.utc_today))
+      Enum.filter(all, &(Date.compare(DateTime.to_date(&1.measured_at), Date.utc_today) == :eq))
   end
 
   @doc """

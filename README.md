@@ -1,4 +1,4 @@
-# NEPI - Nobody Expects Polish Inquisition presents
+# NEPI - Nobody Expects Polish Inquisition
 
 ## Goals
 
