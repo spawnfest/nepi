@@ -10,7 +10,7 @@
   </div>
   <div class="col-md-6 col-xs-12">
     <div class="panel panel-default">
-      <div class="panel-heading">Humidity:</div>
+      <div class="panel-heading">Rainfall:</div>
       <div class="panel-body">
         <div id="dryHumidity"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
         <div id="waterHumidity" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div>
@@ -57,7 +57,7 @@ var myChart2 = new Chart(ctx2, {
     data:{
       labels: <%= @humidity_keys %>,
       datasets: [{
-        label: 'humidity',
+        label: 'rainfall',
         data: <%= @humidity_values %>,
         backgroundColor: 'rgba(24, 122, 245, 0.2)'
       }]
