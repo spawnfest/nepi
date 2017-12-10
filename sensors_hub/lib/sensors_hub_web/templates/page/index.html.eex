@@ -1,8 +1,22 @@
-<canvas id="myChart" width="400" height="400"></canvas>
-<ul>
-  <%= for hydration <- @hydrations do %>
-    <li>
-      Hydration sensor: <b><%= hydration.sensor_name %></b> reported <%= hydration.value %> at <%= hydration.measured_at %> </br>
-    </li>
-  <% end %>
-</ul>
+<canvas id="hydro" width="400" height="400"></canvas>
+<script>var ctx1 = document.getElementById("hydro");
+var myChart1 = new Chart(ctx1, {
+    type: 'bar',
+    data:{
+      labels: <%= @hydro_keys %>,
+      datasets: [{
+        label: 'hydration',
+        data: <%= @hydro_values %>
+      }]
+      },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+
+})</script>
