@@ -1,7 +1,7 @@
 <div>Hydration:
 <div id="dryHydro"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
 <div id="waterHydro" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div></div>
-<div>Humidities:
+<div>Humidity:
 <div id="dryHumidity"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
 <div id="waterHumidity" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div></div>
 
@@ -34,7 +34,7 @@ var myChart2 = new Chart(ctx2, {
     data:{
       labels: <%= @humidity_keys %>,
       datasets: [{
-        label: 'hydration',
+        label: 'humidity',
         data: <%= @humidity_values %>
       }]
       },

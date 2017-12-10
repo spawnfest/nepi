@@ -63,13 +63,11 @@ channel.on("hydration", data => {
   var dryImg = document.getElementById("dryHydro");
   var waterImg = document.getElementById("waterHydro");
 
-  if (data.hydration.value > 0.0)
-  {
+  if (data.hydration.value > 0.0) {
     dryImg.hidden = true;
     waterImg.hidden = false;
   }
-  else
-  {
+  else {
     dryImg.hidden = false;
     waterImg.hidden = true;
   }
@@ -87,13 +85,11 @@ channel.on("humidity", data => {
   var dryImg = document.getElementById("dryHumidity");
   var waterImg = document.getElementById("waterHumidity");
 
-  if (data.hydration.value > 0.0)
-  {
+  if (data.hydration.value > 0.0) {
     dryImg.hidden = true;
     waterImg.hidden = false;
   }
-  else
-  {
+  else {
     dryImg.hidden = false;
     waterImg.hidden = true;
   }
