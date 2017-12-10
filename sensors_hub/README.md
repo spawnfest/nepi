@@ -1,16 +1,18 @@
 # SensorsHub
 
-Simple web app to display live data from you flowers farm.
+Simple web app to display live data from you flowers plantation.
 
 Currently we are displaying:
 
 * hydration of flowers
 * precipitation
-* people presence at farm
+
+Application can be used to scarry of intruders in our plantation. In order to do that
+you have to click warning button and to switch it of you have to click it again.
 
 Currently application is hosted at: [`sensors hub`](https://sensors-hub.herokuapp.com)
 
-### In order to view your farm at home:
+### In order to view your plantation at home:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
