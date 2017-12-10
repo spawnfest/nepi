@@ -1,11 +1,10 @@
-<image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/>
-<image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/>
-<image src="<%= static_path(@conn, "/images/heat.png") %>" height="200" width="200"/>
-<image src="<%= static_path(@conn, "/images/warning.png") %>" height="200" width="200"/>
-<image src="<%= static_path(@conn, "/images/safety.png") %>" height="200" width="200"/>
-<br />
-<image src="<%= static_path(@conn, "/images/marijuana.png") %>" height="400" width="400"/>
-<br />
+<div>Hydration:
+<div id="dryHydro"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
+<div id="waterHydro" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div></div>
+<div>Humidities:
+<div id="dryHumidity"><image src="<%= static_path(@conn, "/images/dry.png") %>" height="200" width="200"/></div>
+<div id="waterHumidity" hidden="true"><image src="<%= static_path(@conn, "/images/water.png") %>" height="200" width="200"/></div></div>
+
 <canvas id="hydro" width="400" height="400"></canvas>
 <canvas id="humidities" width="400" height="400"></canvas>
 <script>var ctx1 = document.getElementById("hydro");
@@ -50,4 +49,5 @@ var myChart2 = new Chart(ctx2, {
     }
 
 })
+
 </script>

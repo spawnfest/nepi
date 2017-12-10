@@ -60,7 +60,19 @@ channel.join()
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 channel.on("hydration", data => {
-  console.log(data)
+  var dryImg = document.getElementById("dryHydro");
+  var waterImg = document.getElementById("waterHydro");
+
+  if (data.hydration.value > 0.0)
+  {
+    dryImg.hidden = true;
+    waterImg.hidden = false;
+  }
+  else
+  {
+    dryImg.hidden = false;
+    waterImg.hidden = true;
+  }
 })
 
 channel.on("thermal", data => {
@@ -72,7 +84,19 @@ channel.on("proximity", data => {
 })
 
 channel.on("humidity", data => {
-  console.log(data)
+  var dryImg = document.getElementById("dryHumidity");
+  var waterImg = document.getElementById("waterHumidity");
+
+  if (data.hydration.value > 0.0)
+  {
+    dryImg.hidden = true;
+    waterImg.hidden = false;
+  }
+  else
+  {
+    dryImg.hidden = false;
+    waterImg.hidden = true;
+  }
 })
 
 export default socket
