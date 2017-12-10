@@ -95,4 +95,8 @@ channel.on("humidity", data => {
   }
 })
 
+document.getElementById("buzzer").onclick = function() {
+  channel.push("buzzer", {body: "1"})
+}
+
 export default socket

@@ -18,7 +18,7 @@
     </div>
   </div>
 <div>
-
+<button type="button" class="btn btn-primary" id="buzzer">Buzzer</button>
 <div class="row">
   <div class="col-md-6 col-xs-12">
     <canvas id="hydro" width="200" height="200"></canvas>
