@@ -12,10 +12,10 @@
 var myChart1 = new Chart(ctx1, {
     type: 'bar',
     data:{
-      labels: <%= @hydro_keys %>,
+      labels: <%= @hydrations.keys %>,
       datasets: [{
         label: 'hydration',
-        data: <%= @hydro_values %>
+        data: <%= @hydrations.values %>
       }]
       },
     options: {
