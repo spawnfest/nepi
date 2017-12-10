@@ -16,8 +16,10 @@ use Mix.Config
 config :sensors,
   hydration_pin: 17,
   humidity_pin: 5,
+  alarm_pin: 26,
   sensor_type: :hydration,
-  base_url: "https://sensors-hub.herokuapp.com/api/"
+  base_url: "https://sensors-hub.herokuapp.com/api/",
+  socket_url: "wss://sensors-hub.herokuapp.com/socket/websocket"
 
 key_mgmt = System.get_env("NERVES_NETWORK_KEY_MGMT") || "WPA-PSK"
 

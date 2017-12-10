@@ -56,7 +56,9 @@ defmodule Sensors.Mixfile do
       {:elixir_ale, "~> 1.0"},
       {:nerves_network, "~> 0.3"},
       {:httpoison, "~> 0.13.0"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:websocket_client, "~> 1.2"},
+      {:phoenix_gen_socket_client, "~> 2.0"}
     ] ++
     deps(@target)
   end
