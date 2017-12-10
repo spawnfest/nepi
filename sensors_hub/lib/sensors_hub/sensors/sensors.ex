@@ -21,6 +21,11 @@ defmodule SensorsHub.Sensors do
     Repo.all(Hydration)
   end
 
+  def list_today_hydrations do
+     all = Repo.all(Hydration)
+     Enum.filter(all, &(&1.measured_at >= Date.utc_today))
+  end
+
   @doc """
   Gets a single hydration.
 
@@ -211,6 +216,11 @@ defmodule SensorsHub.Sensors do
   """
   def list_humidities do
     Repo.all(Humidity)
+  end
+
+  def list_today_humidities do
+      all = Repo.all(Humidity)
+      Enum.filter(all, &(&1.measured_at >= Date.utc_today))
   end
 
   @doc """

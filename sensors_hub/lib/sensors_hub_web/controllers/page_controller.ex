@@ -5,11 +5,11 @@ defmodule SensorsHubWeb.PageController do
 
   def index(conn, _params) do
     hydrations =
-      SensorsHub.Sensors.list_hydrations()
+      SensorsHub.Sensors.list_today_hydrations()
       |> HydrationAggregator.aggregate
 
     humidities =
-      SensorsHub.Sensors.list_humidities()
+      SensorsHub.Sensors.list_today_humidities()
       |> HumidityAggregator.aggregate
 
     thermals = SensorsHub.Sensors.list_thermals()
